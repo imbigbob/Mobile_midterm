@@ -9,15 +9,20 @@ const Stack = createNativeStackNavigator();
 
 const Homepage = () => {
   //const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ flex: 1, padding: SIZES.medium }}>
-          <Welcome />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    // <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    //   <ScrollView showsVerticalScrollIndicator={false}>
+    //     <View style={{ flex: 1, padding: SIZES.medium }}>
+
+    //       <Text style={styles.userName}>Hello Thanh Hai</Text>
+    //     </View>
+    //   </ScrollView>
+    // </SafeAreaView>
+
+    <View style={{ flex: 1, padding: SIZES.medium }}>
+      <Text >Hello Thanh Hai cu 19 cm</Text>
+    </View>
   );
 };
 export default Homepage;

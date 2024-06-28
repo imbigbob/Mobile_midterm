@@ -1,13 +1,14 @@
-import home from "../assets/icons/vector3@3x.png";
-import reward from "../assets/icons/vector3@6x.png";
-import MyOrder from "../assets/icons/group-70842@3x.png";
+import home from   "../assets/icons/home.png";
+import reward from "../assets/icons/reward.png";
+import MyOrder from "../assets/icons/MyOrder.png";
 
-import cappuccino from "../assets/icons/mug-coffee-png16828-3@3x.png";
-import flatwhite from "../assets/icons/mug-coffee-png16824-3@3x.png";
+import cappuccino from "../assets/icons/cappucino.png";
+import flatwhite from "../assets/icons/flatwhite.png";
+import americano from "../assets/icons/americano.png";
 
-import user from "../assets/icons/iconlylightoutlineprofile@3x.png";
-import location from "../assets/icons/iconlylightoutlinelocation@3x.png";
-import cart from "../assets/icons/iconlylightbuy1@3x.png";
+import user from "../assets/icons/user.png";
+import location from "../assets/icons/location.png";
+import cart from "../assets/icons/cart.png";
 
 export default {
     home,
@@ -16,6 +17,7 @@ export default {
 
     cappuccino,
     flatwhite,
+    americano,
 
     user,
     location,
