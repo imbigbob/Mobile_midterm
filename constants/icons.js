@@ -9,6 +9,7 @@ import americano from "../assets/icons/americano.png";
 import user from "../assets/icons/user.png";
 import location from "../assets/icons/location.png";
 import cart from "../assets/icons/cart.png";
+import back from "../assets/icons/back.png";
 
 export default {
     home,
@@ -22,5 +23,6 @@ export default {
     user,
     location,
     cart,
+    back,
 
 };
