@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { COLORS, SIZES } from "../../constants";
-import * as React from "react";
 const styles = StyleSheet.create({
 
   button: {
@@ -21,8 +20,6 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: COLORS.colorDarkslategray_100,
     alignSelf: 'flex-start',
-    marginHorizontal: '1%',
-    marginBottom: '3%',
     minWidth: '100%',
     textAlign: 'center',
   },

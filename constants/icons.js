@@ -1,10 +1,11 @@
-import home from   "../assets/icons/home.png";
+import home from "../assets/icons/home.png";
 import reward from "../assets/icons/reward.png";
 import MyOrder from "../assets/icons/MyOrder.png";
 
 import cappuccino from "../assets/icons/cappucino.png";
 import flatwhite from "../assets/icons/flatwhite.png";
 import americano from "../assets/icons/americano.png";
+import mocha from "../assets/icons/mocha.png";
 
 import user from "../assets/icons/user.png";
 import location from "../assets/icons/location.png";
@@ -19,6 +20,7 @@ export default {
     cappuccino,
     flatwhite,
     americano,
+    mocha,
 
     user,
     location,

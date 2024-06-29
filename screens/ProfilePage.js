@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Image, View, TextInput, Text, Touchable, TouchableOpacity } from "react-native"; // Import StyleSheet
 import { COLORS, icons, SIZES, FONT, SHADOWS } from "../constants";
-import { useState } from "react";
+
 import { useNavigation } from '@react-navigation/native';
 const ProfilePage = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
