@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 const Profile = () => {
     const navigation = useNavigation();
     return (
+
         <TouchableOpacity style={styles.btnContainer} onPress={() => navigation.navigate("ProfilePage")}>
             <Image source={icons.user} dimension="100%" />
         </TouchableOpacity>

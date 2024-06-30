@@ -1,20 +1,22 @@
-import * as React from "react";
-import { StyleSheet, View, Text } from "react-native"; // Import StyleSheet
+
+import { StyleSheet, View, Text } from "react-native";
 import { COLORS, SIZES } from "../../constants";
-import Welcome from '../../components/home/welcome/Welcome';  // Adjust the import path as needed
-import Profile from '../../components/home/profile/Profile';  // Adjust the import path as needed
-import Product from "../../components/home/Product/Product"; // Adjust the import path as needed
-import NavigatePage from "../../components/home/NavigatePage/NavigatePage"; // Adjust the import path as needed
-import styles from "./HomePageStyle"; // Import the styles
+import Welcome from '../../components/home/welcome/Welcome';
+import Profile from '../../components/home/profile/Profile';
+import Product from "../../components/home/Product/Product";
+import NavigatePage from "../../components/home/NavigatePage/NavigatePage";
+import Cart from "../../components/Cart";
+import styles from "./HomePageStyle";
+import { useNavigation } from "@react-navigation/native";
 
 const Homepage = () => {
+  const navigation = useNavigation();
 
   return (
-
-
     <View style={{ flex: 1 }}>
       <View style={{ flex: 2, flexDirection: 'row' }}>
         <Welcome />
+        <Cart />
         <Profile />
       </View>
 
@@ -23,18 +25,18 @@ const Homepage = () => {
 
       <View style={[styles.orderPart, { flex: 7 }]}>
         <View style={{ flex: 6 }}>
-          <Text >Choose your coffe</Text>
-          <Product />
+          <Text style={{ color: '#D8D8D8', marginLeft: '2%', fontSize: 20 }}>
+            Choose your coffee
+          </Text>
+          <Product navigation={navigation} />
         </View>
-        <View style={{ flex: 1 ,backgroundColor:'white',borderRadius:30,marginBottom:'1'}}>
-         <NavigatePage />
+
+        <View style={{ flex: 1, backgroundColor: 'white', borderRadius: 30, marginBottom: '1%' }}>
+          <NavigatePage />
         </View>
       </View>
-
     </View>
   );
 };
 
 export default Homepage;
-
-

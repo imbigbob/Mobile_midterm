@@ -4,18 +4,20 @@ import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: "60%",
+    
   },
   userName: {
+    
     fontFamily: FONT.regular,
-    fontSize: SIZES.large,
-    color: COLORS.secondary,
+    fontSize: 20,
+    color: '#001833',
   },
   welcomeMessage: {
     fontFamily: FONT.bold,
-    fontSize: SIZES.xLarge,
-    color: COLORS.primary,
-    marginTop: 2,
+    fontSize: SIZES.medium,
+    color: '#D8D8D8',
+    marginTop: '2%',
   },
   searchContainer: {
     justifyContent: "center",

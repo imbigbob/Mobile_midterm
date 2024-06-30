@@ -8,7 +8,7 @@ import styles from "../welcome/welcome.style";
 
 const Welcome = () => {
 return (
-    <View style={styles.container}>
+    <View style={[styles.container,{marginLeft:'2%'}]}>
         <Text style={styles.welcomeMessage}>Hello  </Text>
         <Text style={styles.userName}>Thanh Hai</Text>
     </View>

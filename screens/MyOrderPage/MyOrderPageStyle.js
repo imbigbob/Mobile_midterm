@@ -1,4 +1,4 @@
-import {  StyleSheet } from "react-native";
+import { Dimensions, StyleSheet, useWindowDimensions } from "react-native";
 
 import { COLORS, SIZES } from "../../../constants";
 
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
       marginRight: '1%',
       minWidth: '30%',
       textAlign: 'center',
-      bottom: 0,
     },
     selected: {
       backgroundColor: 'coral',
@@ -44,8 +43,8 @@ const styles = StyleSheet.create({
       fontSize: 24,
     },
     productImage: {
-      width: 50,
-      height: 50,
+      width: 80,
+      height: 80,
       marginBottom: 8,
       alignSelf: 'center',
     },

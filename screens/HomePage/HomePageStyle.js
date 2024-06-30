@@ -15,9 +15,14 @@ const styles = StyleSheet.create({
 
   },
   orderPart: {
-    paddingHorizontal: 8,
+    paddingHorizontal: '1%',
     paddingVertical: 6,
-    borderRadius: 40,
+
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+
     backgroundColor: COLORS.colorDarkslategray_100,
     alignSelf: 'flex-start',
     minWidth: '100%',
