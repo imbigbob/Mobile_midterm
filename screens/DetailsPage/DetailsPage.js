@@ -14,7 +14,7 @@ const DetailsPage = ({ route }) => {
   const [selectedIce, setSelectedIce] = useState(null);
   const [selectedCup, setSelectedCup] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  
   const prices = {
     sizes: {
       S: 2.5,
@@ -34,10 +34,10 @@ const DetailsPage = ({ route }) => {
   useEffect(() => {
     const calculatePrice = () => {
       let price = 0;
-      if (count > 0 && selectedSize && selectedShot && selectedCup) price +=
-        prices.sizes[selectedSize] +
+      if (count > 0 && selectedSize && selectedShot && selectedCup) price =
+        (prices.sizes[selectedSize] +
         prices.shots[selectedShot] +
-        prices.cups[selectedCup];
+        prices.cups[selectedCup])*count;
       setTotalPrice(price);
     };
 
