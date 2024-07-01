@@ -44,7 +44,7 @@ const App = () => {
             <Stack.Screen
               name="MyCartPage"
               component={MyCartPage}
-              options={{ headerShown: false }}
+              options={{ headerShown: 'My Cart'}}
             />
             <Stack.Screen
               name="DetailsPage"

@@ -22,7 +22,7 @@ export default {
     MyOrder,
 
     cappuccino,
-    flatwhite,
+    flatwhite ,
     americano,
     mocha,
     

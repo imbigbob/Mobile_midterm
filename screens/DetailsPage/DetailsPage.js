@@ -1,10 +1,9 @@
-
-import { StyleSheet, View, Text, TouchableOpacity, Image, Button } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { COLORS, SIZES, icons } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
-import Cart from "../../components/Cart";
 import styles from "./DetailsPageStyle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { PreviewLayoutCup, PreviewLayout } from "../../components/DetailsPage/CompoDetails";
 
 const DetailsPage = ({ route }) => {
   const { name } = route.params;
@@ -14,98 +13,113 @@ const DetailsPage = ({ route }) => {
   const [selectedShot, setSelectedShot] = useState(null);
   const [selectedIce, setSelectedIce] = useState(null);
   const [selectedCup, setSelectedCup] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const prices = {
+    sizes: {
+      S: 2.5,
+      M: 3.5,
+      L: 4.5,
+    },
+    shots: {
+      single: 0.5,
+      double: 1.0,
+    },
+    cups: {
+      champerPot: 1.0,
+      plasticCupStraw: 0.5,
+    },
+  };
+
+  useEffect(() => {
+    const calculatePrice = () => {
+      let price = 0;
+      if (count > 0 && selectedSize && selectedShot && selectedCup) price +=
+        prices.sizes[selectedSize] +
+        prices.shots[selectedShot] +
+        prices.cups[selectedCup];
+      setTotalPrice(price);
+    };
+
+    calculatePrice();
+  }, [count, selectedSize, selectedShot, selectedCup]);
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      name,
+      count,
+      selectedSize,
+      selectedShot,
+      selectedIce,
+      selectedCup,
+      totalPrice,
+    };
+    navigation.navigate('MyCartPage', { cartItem });
+  };
+
   return (
     <View style={{ flex: 1, padding: '1%' }}>
-
-      <View style={[styles.button, { flex: 4 }]}>
+      <View style={{ flex: 4 }}>
         <Image source={icons[name]} style={styles.productImage} />
       </View>
 
-      <View style={{ flex: 1, flexDirection: 'row', }}>
+      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
         <Text style={[styles.countText, { minWidth: '40%' }]}>{name}</Text>
-        <Button style={styles.sign} title="-" onPress={() => setCount(count - 1)} />
+
+        <TouchableOpacity style={styles.buttonStyle} onPress={() => setCount(count > 0 ? count - 1 : 0)}>
+          <Text style={styles.sign}>-</Text>
+        </TouchableOpacity>
+
         <Text style={[styles.countText, { marginLeft: '5%', marginRight: '5%' }]}>{count}</Text>
-        <Button style={styles.sign} title="+" onPress={() => setCount(count + 1)} />
+
+        <TouchableOpacity style={styles.buttonStyle} onPress={() => setCount(count + 1)}>
+          <Text style={styles.sign}>+</Text>
+        </TouchableOpacity>
+
       </View>
 
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <Text style={[styles.countText, { minWidth: '40%' }]}>Shot</Text>
-        <PreviewLayout values={['single', 'double']}
+        <PreviewLayout
+          values={['single', 'double']}
           selectedValue={selectedShot}
-          setSelectedValue={setSelectedShot} />
+          setSelectedValue={setSelectedShot}
+        />
       </View>
 
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <Text style={[styles.countText, { minWidth: '40%' }]}>Select</Text>
-        <PreviewLayoutCup values={[
-          { name: 'champerPot', image: icons.champerPot },
-          { name: 'plasticCupStraw', image: icons.plasticCupStraw },]}
+        <PreviewLayoutCup
+          values={[
+            { name: 'champerPot', image: icons.champerPot },
+            { name: 'plasticCupStraw', image: icons.plasticCupStraw },
+          ]}
           selectedValue={selectedCup}
           setSelectedValue={setSelectedCup} />
       </View>
       <View style={{ flex: 1, flexDirection: 'row' }}>
-        <Text style={[styles.countText, { minWidth: '40%' }]}>Select</Text>
+        <Text style={[styles.countText, { minWidth: '40%' }]}>Size</Text>
         <PreviewLayoutCup values={[
           { name: 'S', image: icons.plasticCup },
           { name: 'M', image: icons.plasticCup },
-          { name: 'L', image: icons.plasticCup},]}
-          selectedValue={selectedCup}
-          setSelectedValue={setSelectedCup} />
+          { name: 'L', image: icons.plasticCup },]}
+          selectedValue={selectedSize}
+          setSelectedValue={setSelectedSize} />
       </View>
-
       <View style={{ flex: 1, flexDirection: 'row' }}>
-        </View>
-        
+        {totalPrice > 0 && (
+          <View style={{ flex: 1, flexDirection: 'row', alignContent: 'space-between', flexWrap: 'wrap', }}>
+            <Text style={styles.totalPriceText}>Total Price: ${totalPrice}</Text>
+            <TouchableOpacity style={styles.addToCartButton} onPress={handleAddToCart}>
+              <Text style={styles.addToCartText}>Add to Cart</Text>
+            </TouchableOpacity>
+          </View>
+
+        )}
+      </View>
     </View>
   );
 };
 
-
-const PreviewLayout = ({
-  values,
-  selectedValue,
-  setSelectedValue
-}) => (
-  <View style={{ padding: 10, flex: 1 }}>
-    <View style={styles.row}>
-      {values.map(value => (
-        <TouchableOpacity
-          key={value}
-          onPress={() => setSelectedValue(value)}
-          style={[styles.shot, selectedValue === value && styles.selected]}>
-          <Text
-            style={[
-              styles.buttonLabel,
-              selectedValue === value && styles.selectedLabel,
-            ]}>
-            {value}
-          </Text>
-        </TouchableOpacity>
-      ))}
-    </View>
-  </View>
-
-
-);
-
-const PreviewLayoutCup = ({
-  values,
-  selectedValue,
-  setSelectedValue
-}) => (
-  <View style={{ padding: 10, flex: 1 }}>
-
-    <View style={styles.row}>
-      {values.map(value => (
-        <TouchableOpacity
-          key={value.name}
-          onPress={() => setSelectedValue(value.name)}
-          style={[styles.cup, selectedValue === value.name && styles.selected]}>
-          <Image source={value.image} style={styles.productImage} />
-        </TouchableOpacity>
-      ))}
-    </View>
-  </View>
-);
 
 export default DetailsPage;

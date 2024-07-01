@@ -1,26 +1,49 @@
-// import  { useState } from 'react';
-// import { Text, TouchableOpacity, View, Image } from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
-// import styles from './ProductsStyle';
-// import { COLORS, SIZES, icons } from '../../../constants';
 
+import { Text, TouchableOpacity, View, Image } from 'react-native';
 
-// const Product = ({ navigation }) => {
-//   const [selectedValue, setSelectedValue] = useState('column');
+import styles from './CompoDetailsStyle';
+import { COLORS, SIZES, icons } from '../../constants';
 
-//   return (
-//     <PreviewLayout
-//       values={[
-//         { name: 'cappuccino', image: icons.cappuccino },
-//         { name: 'americano', image: icons.americano },
-//         { name: 'mocha', image: icons.mocha },
-//         { name: 'flatwhite', image: icons.flatwhite }
-//       ]}
-//       selectedValue={selectedValue}
-//       setSelectedValue={setSelectedValue}
-//       navigation={navigation}
-//     />
-//   );
-// };
+ export const PreviewLayoutCup = ({ values, selectedValue, setSelectedValue }) => (
+ 
+    <View style={styles.row}>
+      {values.map(value => (
+        <TouchableOpacity
+          key={value.name}
+          onPress={() => setSelectedValue(value.name)}
+          style={[styles.cup, selectedValue === value.name && styles.selected]}
+        >
+          <Image source={value.image} style={styles.productImage} />
+        </TouchableOpacity>
+      ))}
+    </View>
+ 
+);
 
-// export default Product;
+export const PreviewLayout = ({
+    values,
+    selectedValue,
+    setSelectedValue
+  }) => (
+    <View style={{ flex: 1 }}>
+      <View style={styles.row}>
+        {values.map(value => (
+          <TouchableOpacity
+            key={value}
+            onPress={() => setSelectedValue(value)}
+            style={[styles.shot, selectedValue === value && styles.selected]}
+          >
+            <Text
+              style={[
+                styles.buttonLabel,
+                selectedValue === value && styles.selectedLabel,
+              ]}
+            >
+              {value}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
+  
